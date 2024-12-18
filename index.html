@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastitis Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hero-section">
+        <h1>Welcome to the Mastitis Detection System</h1>
+        <p>Accurate predictions to ensure cow health and maximize milk production.</p>
+    </div>
+    <div class="form-section" id="predict">
+        <h2>Predict Mastitis</h2>
+        <label for="temperature">Temperature (°C):</label>
+        <input type="text" id="temperature" placeholder="Enter temperature in °C" required><br><br>
+
+        <label for="hardness">Udder Hardness (0-5):</label>
+        <select id="hardness" required>
+            <option value="">Select Udder Hardness</option>
+            <option value="0">0: Very soft, normal udder</option>
+            <option value="1">1: Slight firmness</option>
+            <option value="2">2: Mild firmness</option>
+            <option value="3">3: Moderate firmness</option>
+            <option value="4">4: Severe firmness</option>
+            <option value="5">5: Extremely hard</option>
+        </select><br><br>
+
+        <label for="milk_visibility">Milk Yield (0-1):</label>
+        <select id="milk_visibility" required>
+            <option value="">Select Milk Yield</option>
+            <option value="0">0: Normal milk production</option>
+            <option value="1">1: Reduced milk yield</option>
+        </select><br><br>
+
+        <label for="milk_color">Milk Color (0-5):</label>
+        <select id="milk_color" required>
+            <option value="">Select Milk Color</option>
+            <option value="0">0: Normal milk color</option>
+            <option value="1">1: Slightly off-white</option>
+            <option value="2">2: Cloudy, early infection</option>
+            <option value="3">3: Noticeable discoloration, infection</option>
+            <option value="4">4: Blood/pus hints, advanced infection</option>
+            <option value="5">5: Severe abnormal milk</option>
+        </select><br><br>
+
+        <label for="pain">Pain Score (0-5):</label>
+        <select id="pain" required>
+            <option value="">Select Pain Score</option>
+            <option value="0">0: No pain</option>
+            <option value="1">1: Minimal pain</option>
+            <option value="2">2: Mild discomfort</option>
+            <option value="3">3: Moderate pain</option>
+            <option value="4">4: Severe pain</option>
+            <option value="5">5: Extreme pain</option>
+        </select><br><br><br>
+
+        <button onclick="predictMastitis()">Predict</button>
+        <!-- Help Button -->
+<button id="helpButton" onclick="toggleHelp()" class="help-button">Help</button>
+
+<!-- Help Modal (hidden initially) -->
+<div id="helpModal" class="help-modal">
+    <div class="help-modal-content">
+        <span class="help-close" onclick="toggleHelp()">&times;</span>
+        <h3>How to Enter Values</h3>
+        <p>Follow the instructions below to enter values:</p>
+        <ul><br>
+            <li><strong>Temperature:</strong> Enter the cow's body temperature in °C. The average body temperature of a healthy cow is between 38.5°C and 39.5°C. A temperature above this range may indicate an infection, fever, or inflammation, which could be a sign of a health problem such as mastitis, pneumonia, or metabolic disorders. Regular monitoring of temperature is crucial to identify early signs of illness.</li>
+            <br><li><strong>Udder Hardness:</strong> Select the hardness of the udder from the dropdown (0 = very soft, 5 = extremely hard). Udder hardness can be an indicator of inflammation or infection, such as mastitis. A very soft udder may suggest poor milk production, while an extremely hard udder often points to a severe infection or blockage. Early detection of changes in udder hardness is vital for timely treatment.</li>
+            <br><li><strong>Milk Visibility:</strong> Select whether milk is visible (1) or not (0). Visible milk is typically a sign of normal lactation. If milk is not visible, it could indicate an issue such as insufficient milk production, blockage in the milk ducts, or other health concerns. If this persists, it may require further examination by a veterinarian to determine the underlying cause.</li>
+            <br><li><strong>Milk Color:</strong> Select the milk color on a scale from 0 to 5. Milk color can provide clues about the cow’s health and nutrition. Normal milk is white, but abnormalities in color can indicate health issues. For example, yellow or greenish milk may indicate mastitis or ketosis, while bloody milk can signal an injury or infection. Monitoring milk color is essential for detecting early signs of disease or malnutrition.</li>
+        </ul>
+        
+    </div>
+</div>
+
+        <p id="result"></p>
+    </div>
+
+    <!-- Chatbot Section -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" onclick="toggleChatbot()">Chatbot</button>
+        <div class="chatbot" id="chatbot">
+            <div class="chatbot-header">Ask About Mastitis</div>
+            <div class="chatbot-messages" id="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your question here">
+                <button onclick="sendChatbotMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Mastitis Detection System. All Rights Reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
